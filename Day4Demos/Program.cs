@@ -13,22 +13,31 @@ namespace Day4Demos
 
             //Instantiate a list
             List<InventoryItem> items = new List<InventoryItem>();
+            try
+            {
+                //Instantiate and item
+                InventoryItem item1 = new InventoryItem();
+                //Initializing the item
+                item1.Id = 1; //Assign into property
+                item1.SetSerialNumber(1);//Call a set method (mutator)
+                item1.SetWeight(500);
+                //Add item to list
+                items.Add(item1);
 
-            //Instantiate and item
-            InventoryItem item1 = new InventoryItem();
-            //Initializing teh item
-            item1.SetSerialNumber(1);
-            item1.SetWeight(500);
-            //Add item to list
-            items.Add(item1);
+                //Instantiate and item
+                InventoryItem item2 = new InventoryItem();
+                //Initializing teh item
+                item2.Id = -1; //Assign into property
+                item2.SetSerialNumber(2);
+                item2.SetWeight(300);
+                //Add item to list
+                items.Add(item2);
 
-            //Instantiate and item
-            InventoryItem item2 = new InventoryItem();
-            //Initializing teh item
-            item2.SetSerialNumber(2);
-            item2.SetWeight(300);
-            //Add item to list
-            items.Add(item2);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+            }
 
             
 

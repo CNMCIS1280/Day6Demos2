@@ -18,13 +18,24 @@ namespace Day4Demos
        
 
         private int id;
-        public void SetId(int id)
+        public int Id
         {
-            this.id = id;
-        }
-        public int GetId()
-        {
-            return id;
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                if (value > 0)
+                {
+                    id = value;
+                }
+                else
+                {
+                    throw new Exception("Id value must be greater than 0.");
+                }
+            }
         }
         
         private int serialNumber;
