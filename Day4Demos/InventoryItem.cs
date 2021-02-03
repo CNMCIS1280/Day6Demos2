@@ -7,6 +7,11 @@ namespace Day4Demos
     public class InventoryItem
     {
         private static double _maxWeight;
+
+        /// <summary>
+        /// Maximum weight shelves can handle in pounds.
+        /// </summary>
+        /// <param name="maxWeight">Maximum weight to set in pounds.</param>
         public static void SetMaxWeight(double maxWeight)
         {
             _maxWeight = maxWeight;
@@ -38,102 +43,39 @@ namespace Day4Demos
             }
         }
         
-        private int serialNumber;
-        public void SetSerialNumber(int serialNumber)
-        {
-            this.serialNumber = serialNumber;
-        }
-        public int GetSerialNumber()
-        {
-            return serialNumber;
-        }
+        public int SerialNumber { get; set; }
 
-        private string manufacturer;
-        public void SetManufacturer(string manufacturer)
-        {
-            this.manufacturer = manufacturer;
-        }
-        public string GetManufacturer()
-        {
-            return manufacturer;
-        }
+        public string Manufacturer { get; set; }
 
-        private int modelNum;
-        public void SetModelNum(int modelNum)
-        {
-            this.modelNum = modelNum;
-        }
-        public int GetModelNum()
-        {
-            return modelNum;
-        }
+        public string ModelNum { get; set; }
 
-        private int locationId;
-        public void SetLocationId(int locationId)
-        {
-            this.locationId = locationId;
-        }
-        public int GetLocationId()
-        {
-            return locationId;
-        }
+        private int LocationId { get; set; }
 
-        private string condition;
-        public void SetCondition(string condition)
-        {
-            this.condition = condition;
-        }
-        public string GetCondition()
-        {
-            return condition;
-        }
-
+        private string Condition { get; set; }
 
         private double weight;
-        public void SetWeight(double weight)
+
+        public double Weight
         {
-            this.weight = weight;
-            CalcWeightOK();
-        }
-        public double GetWeight()
-        {
-            return weight;            
+            get { return weight; }
+            set { weight = value; CalcWeightOK(); }
         }
 
-        private int? ordernum;
-        public void SetOrderNum(int? ordernum)
-        {
-            this.ordernum = ordernum;
-        }
-        public int? GetOrderNum()
-        {
-            return ordernum;
-        }
-
-        //Lazy way
-        //public bool WeightOK()
-        //{
-        //    return weight < _maxWeight;
-        //}
+        public int? OrderNum { get; set; }
 
         //Eager
-        private bool weightOK;
-
-        public bool GetWeightOK()
-        {
-            return weightOK;
-        }
+        public bool WeightOK { get; private set; }
 
         private void CalcWeightOK()
         {
-            weightOK = weight < _maxWeight;
+            WeightOK = weight < _maxWeight;
         }
 
         public string GetDescription()
         {
-            string info = $"Item serialNumber: {serialNumber}\n";
-            info += $"Item location: {locationId}\n";
-            info += "Weigh OK? " + weightOK;
+            string info = $"Item serialNumber: {SerialNumber}\n";
+            info += $"Item location: {LocationId}\n";
+            info += "Weigh OK? " + WeightOK;
             return info;
         }
     }
